@@ -40,6 +40,10 @@ int solve() {
     }
     
     for(int i = 1; i < readyQue.size(); i++)
+        /**
+         * 프로세스 시작 포인트와 도착시간이 같을 경우 
+         * 지연 시간은 0 이다.
+         */
         if(readyQue[i].startPoint == readyQue[i].arraivedTime)
             anwser += 0;
         else
