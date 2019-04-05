@@ -12,6 +12,7 @@ bool Expr();
 bool Term();
 bool Eprime();
 bool Tprime();
+bool isTure();
 
 int main() {
     getline(cin, word);
@@ -22,6 +23,11 @@ int main() {
     else
         cout << "Error\n";
     return 0;
+}
+
+bool isTrue() {
+    return (*cur >= '0' && *cur <= '9') ||
+           ((*cur >= 'a' && *cur <= 'z') || (*cur >= 'A' && *cur <= 'Z'));
 }
 
 void NextWord() {
@@ -82,8 +88,7 @@ bool Factor() {
             return false;
         else if (*cur != ')')
             return false;
-    } else if ((*cur < '1' && *cur > '9') ||
-               ((*cur < 'a' && *cur > 'z') || (*cur < 'A' && *cur > 'Z')))
+    } else if (!isTrue())
         return false;
     NextWord();
     return true;
