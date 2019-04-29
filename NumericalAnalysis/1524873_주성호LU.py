@@ -13,6 +13,7 @@ with open(file) as f:
 
 n = len(arr) / 2.0
 n = int(n)
+
 A = [[0]*(n+1) for i in range(n)]
 B = [[0] * 1 for i in range(n)]
 L = [[0.0] * n for i in range(n)]
