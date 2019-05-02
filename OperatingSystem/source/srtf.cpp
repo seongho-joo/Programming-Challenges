@@ -61,10 +61,10 @@ int solution() {
                 else break;
             }
         }
-        /**Time interrupt & Scheduler dispatch */
+        /** Time interrupt & Scheduler dispatch */
         sort(readyQ.begin(), readyQ.end(), compare2);
         sec++;
-        /**Running */
+        /** Running */
         if(cnt > 0) {
             answer += cnt - 1;
             cur->usingTime--;
