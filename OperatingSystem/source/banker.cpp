@@ -66,13 +66,6 @@ int main() {
                 inp >> input;
                 request.push_back(input);
             }
-            // /** Need보다 큰 수는 요청할 수 없음 */
-            // for (int i = 0; i < m; i++) {
-            //     if (MAX[PID][i] < request[i] + Alloc[PID][i]) {
-            //         flag = true;
-            //         break;
-            //     }
-            // }
             if (isAlloc(request, PID)) {
                 // 안정상태일 때 요청을 들어줌
                 if (isSafe(request, PID))
@@ -82,9 +75,7 @@ int main() {
                         Need[PID][i] -= request[i];
                     }
                 else {
-                    /**
-                     * unsafe상태이기 때문에 대기 큐에 넣고 요청 보류
-                     */
+                    /** unsafe상태이기 때문에 대기 큐에 넣고 요청 보류 */
                     wait.PID = PID;
                     wait.req = request;
                     waiting.push_back(wait);
