@@ -30,8 +30,7 @@ int solve() {
     // 프로세스 마다 각 사용을 시작하는 시간을 저장
     for(int i = 2; i < readyQue.size(); i++) {
         /**
-         * 전에 사용했던 프로세스가 현재 도착한 프로세스의 시간 보다
-         * 작을 경우 시작시간은 프로세스의 도착시간이다.
+         * 전에 사용했던 프로세스가 현재 도착한 프로세스의 시간 보다 작을 경우 시작시간은 프로세스의 도착시간이다.
          */
         if(readyQue[i - 1].startPoint + readyQue[i - 1].usingTime <= readyQue[i].arraivedTime)
             readyQue[i].startPoint = readyQue[i].arraivedTime;
@@ -41,8 +40,7 @@ int solve() {
     
     for(int i = 1; i < readyQue.size(); i++)
         /**
-         * 프로세스 시작 포인트와 도착시간이 같을 경우 
-         * 지연 시간은 0 이다.
+         * 프로세스 시작 포인트와 도착시간이 같을 경우 지연 시간은 0 이다.
          */
         if(readyQue[i].startPoint == readyQue[i].arraivedTime)
             anwser += 0;
