@@ -36,8 +36,7 @@ bool comp2(const Process& x, const Process& y) {
     return x.arraivedTime < y.arraivedTime;
 }
 /**
- * endTime이 arraivedTime보다 크면
- * usingTime순 으로 정렬한다.
+ * endTime이 arraivedTime보다 크면 usingTime순 으로 정렬한다.
  */
 void solveSeq() {
     endTime = readyQ[0].usingTime;
