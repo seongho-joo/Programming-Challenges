@@ -1,3 +1,6 @@
+/**
+ * Implementation of a Simulator for Banker's Algorithm
+ */
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -63,15 +66,14 @@ int main() {
                 inp >> input;
                 request.push_back(input);
             }
-            /** Need보다 큰 수는 요청할 수 없음 */
-            for (int i = 0; i < m; i++) {
-                if (MAX[PID][i] < request[i] + Alloc[PID][i]) {
-                    flag = true;
-                    break;
-                }
-            }
-
-            if (!flag) {
+            // /** Need보다 큰 수는 요청할 수 없음 */
+            // for (int i = 0; i < m; i++) {
+            //     if (MAX[PID][i] < request[i] + Alloc[PID][i]) {
+            //         flag = true;
+            //         break;
+            //     }
+            // }
+            if (isAlloc(request, PID)) {
                 // 안정상태일 때 요청을 들어줌
                 if (isSafe(request, PID))
                     for (int i = 0; i < m; i++) {
@@ -102,6 +104,10 @@ int main() {
                 vector<Wait>::iterator it = waiting.begin();
                 /** 대기queue에 들어온 순서대로 할당가능한지 판단 */
                 while (it != waiting.end()) {
+                    if (!isAlloc(it->req, it->PID)) {
+                        it++;
+                        continue;
+                    }
                     if (isSafe(it->req, it->PID)) {
                         for (int i = 0; i < m; i++) {
                             Av[i] -= it->req[i];
@@ -156,16 +162,17 @@ bool isSafe(vector<int>& req, int PID) {
     int count = 0, i = 0;  // 할당 완료된 수
     /** 할당가능한 자원의 수에서 요청한 할당 수를 빼줌 */
     for (int i = 0; i < m; i++) {
-        // alloc[PID][i] += req[i];
+        alloc[PID][i] += req[i];
         av[i] -= req[i];
         need[PID][i] -= req[i];
+        /** 현재 가지고 있는 자원보다 요청한 자원이 더 많을 경우 */
         if (av[i] < 0) return false;
     }
     while (true) {
         flag = false;
-        /** 안전수열이 존재하지 않음 */
+        /** 안전순열이 존재하지 않음 */
         if (i >= n) return false;
-        /** 안전수열이 존재 */
+        /** 안전순열이 존재 */
         if (count == n) break;
         /** 할당완료 됨 */
         if (complete[i]) {
@@ -181,7 +188,8 @@ bool isSafe(vector<int>& req, int PID) {
             }
         }
         if (!flag) {
-            for (int j = 0; j < m; j++) av[j] += Alloc[i][j];
+            /** 작업이 완료된 프로세스가 자원들을 반납했다고 가정 */
+            for (int j = 0; j < m; j++) av[j] += alloc[i][j];
             complete[i] = true;
             count++;
             i = 0;
@@ -192,6 +200,6 @@ bool isSafe(vector<int>& req, int PID) {
 
 bool isAlloc(vector<int>& req, int PID) {
     for (int i = 0; i < m; i++)
-        if (Need[PID][i] < req[i]) return false;
+        if (MAX[PID][i] < req[i] + Alloc[PID][i]) return false;
     return true;
 }
