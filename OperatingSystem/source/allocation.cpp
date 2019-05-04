@@ -3,7 +3,6 @@
  */
 #include <algorithm>
 #include <fstream>
-#include <iostream>
 #include <list>
 #include <vector>
 using namespace std;
