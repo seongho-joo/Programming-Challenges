@@ -96,7 +96,6 @@ int main() {
                                     // 노드의 개수 -1
         for (int i = 0; i < pre.size(); i++) out << pre[i] << "\n";
     }
-
     inp.close();
     out.close();
     return 0;
