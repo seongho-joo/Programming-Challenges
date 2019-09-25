@@ -12,9 +12,9 @@ int n, l, r;  // 폴의 개수, 왼쪽에서 보이는 폴 수, 오른쪽에서 
 unsigned long long solve() {
     if (n == 1) {
         if (r == 1 && l == 1)
-            return 0;
-        else
             return 1;
+        else
+            return 0;
     } else {
         // 크기가 같은 막대는 없기때문에 불가능
         if (r == 1 && l == 1) return 0;
