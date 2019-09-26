@@ -1,5 +1,5 @@
 /**
- * Assignment 12 : Pandora
+ * Assignment 10 : Pandora
  */
 #include <fstream>
 #include <string>
