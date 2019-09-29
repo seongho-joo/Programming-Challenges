@@ -1,0 +1,30 @@
+반복
+
+program Repetition;
+func Fact(n : int)
+returns(int)
+var ret : int;
+   begin
+      for(i=n to 1)
+         ret = i*ret
+   end
+   return ret
+main
+begin
+   call Fact(Number)
+end.
+
+순환
+
+program Circulation;
+func Fact(n : int)
+returns(int)
+var ret : int;
+   begin
+      if(n=1) then return 1
+      return ret = n*Fact(n-1)
+   end
+main
+begin
+   call Fact(Number)
+end.

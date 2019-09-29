@@ -1,0 +1,18 @@
+/* 
+    input program
+*/
+program Sample
+proc Fact (n : long)
+    var m : integer;
+    begin
+        m = n - 1;
+        call Fact(m);
+    end
+    /* main body */
+main
+var a, b : integer;
+begin
+    a = 0;
+    call Fact(a);
+end .
+
