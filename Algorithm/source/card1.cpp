@@ -24,11 +24,6 @@ void Init(int n) {
         inp >> data;
         card.push_back(data);
     }
-
-    last = card.back();
-
-    card.pop_back();
-    card.pop_back();
 }
 
 void solve(int n) {
