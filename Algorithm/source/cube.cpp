@@ -4,18 +4,11 @@
 #include <algorithm>
 #include <fstream>
 using namespace std;
+
 #define MAX 201
 #define INF 987654321
-ifstream inp("cube.inp");
-ofstream out("cube.out");
-int D[201][201][201];
-int w, l, h;  // 가로 세로 높이
 
-void Swap(int& i, int& j) {
-    int temp = j;
-    i = j;
-    j = temp;
-}
+int D[201][201][201];
 
 void Init() {
     for (int i = 1; i < MAX; i++)
@@ -46,7 +39,11 @@ void Init() {
 }
 
 int main() {
+    ifstream inp("cube.inp");
+    ofstream out("cube.out");
+
     int T;
+    int w, l, h;  // 가로 세로 높이
     inp >> T;
     Init();
 
