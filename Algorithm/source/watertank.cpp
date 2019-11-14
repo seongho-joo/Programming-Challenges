@@ -84,12 +84,12 @@ int solve() {
         int y = tank.top().y, x = tank.top().x;
         tank.pop();
         if (visited[y][x]) continue;
+        /**
+         * 현재 물탱크의 물 높이보다 크거나 같을경우 주변의 물탱크의 물 높이는
+         * 구멍 높이로 변경 작을 경우 현재 물 높이로 변경
+         */
         // 위쪽 가로벽 구멍이 있고 위쪽 물 높이가 더 높을경우
         if (hole[0][y][x] != -1 && y != 0 && height[y][x] < height[y - 1][x]) {
-            /**
-             * 현재 물 높이보다 크거나 같을경우 위 물 높이는 구멍 높이로 변경
-             * 작을 경우 현재 물 높이로 변경
-             */
             if (height[y][x] <= hole[0][y][x])
                 height[y - 1][x] = min(hole[0][y][x], height[y - 1][x]);
             else
@@ -100,10 +100,6 @@ int solve() {
         // 아래쪽 가로벽에 구멍이 있고 아래쪽 물 높이가 더 높을경우
         if (hole[0][y + 1][x] != -1 && y != n - 1 &&
             height[y][x] < height[y + 1][x]) {
-            /**
-             * 현재 물 높이보다 크거나 같을경우 아래 물 높이는 구멍 높이로
-             * 변경 작을 경우 현재 물 높이로 변경
-             */
             if (height[y][x] <= hole[0][y + 1][x])
                 height[y + 1][x] = min(hole[0][y + 1][x], height[y + 1][x]);
             else
@@ -113,10 +109,6 @@ int solve() {
         }
         // 왼쪽 가로벽에 구멍이 있고 왼쪽 물 높이가 더 높을경우
         if (hole[1][y][x] != -1 && x != 0 && height[y][x] < height[y][x - 1]) {
-            /**
-             * 현재 물 높이보다 크거나 같을경우 왼쪽 물 높이는 구멍 높이로
-             * 변경 작을 경우 현재 물 높이로 변경
-             */
             if (height[y][x] <= hole[1][y][x])
                 height[y][x - 1] = min(height[y][x - 1], hole[1][y][x]);
             else
@@ -127,10 +119,6 @@ int solve() {
         // 오른쪽 가로벽에 구멍이 있고 오른쪽 물 높이가 더 높을경우
         if (hole[1][y][x + 1] != -1 && x != m - 1 &&
             height[y][x] < height[y][x + 1]) {
-            /**
-             * 현재 물 높이보다 크거나 같을경우 오른쪽 물 높이는 구멍
-             * 높이로 변경 작을 경우 현재 물 높이로 변경
-             */
             if (height[y][x] < hole[1][y][x + 1])
                 height[y][x + 1] = min(height[y][x + 1], hole[1][y][x + 1]);
             else
