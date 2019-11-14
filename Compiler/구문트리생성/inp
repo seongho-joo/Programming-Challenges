@@ -1,0 +1,6 @@
+program Example;
+main
+begin
+ sum = 0;
+ call f(sum)
+end.
