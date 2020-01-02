@@ -1,0 +1,22 @@
+program p;
+
+func sum(x,y:int) returns (int)
+begin
+	return(x+y)
+end
+
+proc print(s :int)
+var x:int;
+begin
+	x=s
+end
+
+
+main
+var a,b,s : int;
+begin
+	a =50;
+	b=20 ;
+	s = sum(a,b);
+	call print(s)
+end.
