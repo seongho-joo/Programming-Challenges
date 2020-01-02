@@ -371,7 +371,7 @@ struct yy_trans_info
 	};
 static yyconst flex_int16_t yy_accept[93] =
     {   0,
-        0,    0,   43,   42,   22,   20,   32,   33,   30,   28,
+       38,   38,   43,   42,   22,   20,   32,   33,   30,   28,
        36,   29,   37,   31,   38,   35,   34,   23,   19,   25,
        39,   42,   39,   39,   39,   39,   39,   39,   39,   39,
        39,   39,   39,   39,   21,   27,   38,   24,   26,   39,
@@ -962,7 +962,10 @@ YY_RULE_SETUP
 return('.');
 	YY_BREAK
 case 38:
-#line 43 "ast.l"
+YY_RULE_SETUP
+#line 42 "ast.l"
+{yylval.dval = atof(yytext); return(TNUMBER);}
+	YY_BREAK
 case 39:
 YY_RULE_SETUP
 #line 43 "ast.l"
@@ -983,7 +986,7 @@ YY_RULE_SETUP
 #line 46 "ast.l"
 ECHO;
 	YY_BREAK
-#line 987 "lex.yy.c"
+#line 990 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
