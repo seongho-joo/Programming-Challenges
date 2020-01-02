@@ -39,7 +39,7 @@ end         return(TEND);
 ":"         return(':');
 ","         return(',');
 "."         return('.');
-[0-9]+ | [0-9]+\.[0-9]* {yylval.dval = atof(yytext); return(TNUMBER);}
+[0-9]*      {yylval.dval = atof(yytext); return(TNUMBER);}
 [a-zA-Z][a-zA-Z0-9]*    {yylval.sval = strdup(yytext); return(TNAME);}
 \\n         ;
 \\t         ;
